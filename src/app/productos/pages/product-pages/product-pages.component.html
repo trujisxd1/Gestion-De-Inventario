@@ -1,0 +1,35 @@
+
+<ng-template #divLoading>
+
+</ng-template>
+
+
+<div class="grid" *ngIf="producto; else divLoading">
+
+
+<mat-card class="col-12 sm:col-6">
+
+<mat-card-header>
+  <mat-card-title>
+    {{producto.nombre}}
+  </mat-card-title>
+  <mat-card-subtitle>
+    {{producto.descripcion}}
+  </mat-card-subtitle>
+</mat-card-header>
+
+<mat-card-content >
+  <h4><strong>Stock</strong> {{producto.cantidad}} </h4>
+  <h4>${{producto.precio}} </h4>
+  <h4>Categoria {{producto.categoria.nombre}} </h4>
+</mat-card-content>
+
+<mat-card-footer>
+  <button mat-button color="primary" [routerLink]="['/productos/list']">Regresar<mat-icon>back</mat-icon></button>
+</mat-card-footer>
+</mat-card>
+
+
+
+
+</div>
