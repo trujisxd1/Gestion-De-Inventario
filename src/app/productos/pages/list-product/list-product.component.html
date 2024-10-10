@@ -1,0 +1,13 @@
+<h1>Productos</h1>
+
+<button mat-button color="primary" [routerLink]="['/productos/new-product']">Agregar producto</button>
+<mat-divider></mat-divider>
+
+
+<div class="grid" mb-8 pt-2>
+  <div class="col-9 sm:col-3" *ngFor="let product of producto">
+
+   <product-card [producto]="product"></product-card>
+
+  </div>
+</div>
