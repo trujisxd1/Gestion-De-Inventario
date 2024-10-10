@@ -1,0 +1,62 @@
+
+<ng-template #nodata>
+
+  <!-- <categoria-loading></categoria-loading> -->
+
+</ng-template>
+
+
+<div *ngIf="proveedor.length>0;else nodata">
+
+<div class="demo-button-container"  >
+  <button mat-button color="primary" [routerLink]="['/proveedor/new-proveedor']">
+  <mat-icon>add</mat-icon>Agregar Proveedor
+  </button>
+
+</div>
+
+
+
+<table mat-table [dataSource]="proveedor" class="mat-elevation-z8">
+  <!-- ID Categoria Column -->
+  <ng-container matColumnDef="idProveedor">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let proveedor"> {{proveedor.idProveedor}} </td>
+  </ng-container>
+
+  <!-- Nombre Column -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <!-- Descripcion Column -->
+  <ng-container matColumnDef="numero">
+    <th mat-header-cell *matHeaderCellDef> numero de contacto</th>
+    <td mat-cell *matCellDef="let element"> {{element.numeroDeContacto}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="accion">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let proveedor">
+      <!-- <button mat-button color="primary"> <mat-icon>delete</mat-icon> Eliminar</button> -->
+      <button mat-button color="primary" [routerLink]="['/proveedor',proveedor.idProveedor]"> <mat-icon>info</mat-icon> Info</button>
+      <button mat-button color="primary" [routerLink]="['/proveedor/edit',proveedor.idProveedor]"> <mat-icon>edit</mat-icon> editar</button>
+    </td>
+  </ng-container>
+  <!-- Fila de encabezado -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+  <!-- Fila de datos -->
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[2, 5, 10]"
+showFirstLastButtons
+aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>
