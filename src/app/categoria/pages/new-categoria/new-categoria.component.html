@@ -1,0 +1,35 @@
+
+
+<h1>{{currentCategoria.idCategoria?'Editar':'Crear'}} Categoria</h1>
+
+<mat-divider></mat-divider>
+
+<div class="grid">
+
+<div class="col-12 sm:col-5">
+
+  <mat-card>
+    <mat-card-content>
+      <form class="grid"  [formGroup]="categoriaForm" (ngSubmit)="onSummit()">
+        <mat-form-field class="col-12">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput required formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Descripcion</mat-label>
+          <input type="text" matInput required formControlName="descripcion">
+        </mat-form-field>
+      </form>
+      <div class="flex justify-content-between">
+
+        <button mat-button color="warn" *ngIf="currentCategoria.idCategoria"  (click)="onDelete(currentCategoria.idCategoria)">Borrar <mat-icon>delete</mat-icon> </button>
+        <span></span>
+
+        <button mat-button color="primary" (click)="onSummit()">Guardar <mat-icon>save</mat-icon> </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+</div>
