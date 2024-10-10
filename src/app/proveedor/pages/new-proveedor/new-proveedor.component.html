@@ -1,0 +1,40 @@
+
+
+<h1>{{currentProveedor.idProveedor}} Categoria</h1>
+
+<mat-divider></mat-divider>
+
+<div class="grid">
+
+<div class="col-12 sm:col-5">
+
+  <mat-card>
+    <mat-card-content>
+      <form class="grid"  [formGroup]="formProveedor" (ngSubmit)="onSumit()">
+        <mat-form-field class="col-12">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput required formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>numeroDeContacto</mat-label>
+          <input type="number" matInput required formControlName="numeroDeContacto">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>email</mat-label>
+          <input type="email" matInput required formControlName="email">
+        </mat-form-field>
+        
+      </form>
+      <div class="flex justify-content-between">
+
+        <button mat-button color="warn" *ngIf="currentProveedor.idProveedor"  (click)="onDelete(currentProveedor.idProveedor)">Borrar <mat-icon>delete</mat-icon> </button>
+        <span></span>
+
+        <button mat-button color="primary" (click)="onSumit()">Guardar <mat-icon>save</mat-icon> </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+</div>
