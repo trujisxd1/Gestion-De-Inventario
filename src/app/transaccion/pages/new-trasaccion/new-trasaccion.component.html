@@ -1,0 +1,49 @@
+
+
+<h1> {{currentTrasanccion.id?'Editar':'Crear'}}  transaccion</h1>
+
+
+<mat-divider></mat-divider>
+
+<div class="grid">
+
+<div class="col-12 sm:col-5">
+
+  <mat-card>
+    <mat-card-content>
+      <form class="grid"  [formGroup]="transaccionForm" (ngSubmit)="onSumit()">
+
+
+        <mat-form-field class="col-12">
+          <mat-label>Cantidad</mat-label>
+          <input type="number" matInput required formControlName="cantidad">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Tipo de transaccion</mat-label>
+       <mat-select required formControlName="tipoTransaccion">
+        <mat-option *ngFor="let comic of entradaSalida" [value]="comic.id">{{comic.value}} </mat-option>
+       </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-12" [formGroupName]="'producto'">
+          <mat-label>Producto</mat-label>
+          <mat-select required formControlName="idProducto">
+            <mat-option *ngFor="let prod of productos" [value]="prod.idProducto">
+              {{prod.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </form>
+      <div class="flex justify-content-between">
+
+        <button mat-button color="warn" *ngIf="currentTrasanccion.id"  (click)="onDelete(currentTrasanccion.id)">Borrar <mat-icon>delete</mat-icon> </button>
+        <span></span>
+
+        <button mat-button color="primary" (click)="onSumit()">Guardar <mat-icon>save</mat-icon> </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+</div>
