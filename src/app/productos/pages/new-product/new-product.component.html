@@ -1,0 +1,60 @@
+
+
+<h1> {{currentProducto.idProducto?'Editar':'Crear'}}  Productos</h1>
+
+
+<mat-divider></mat-divider>
+
+<div class="grid">
+
+<div class="col-12 sm:col-5">
+
+  <mat-card>
+    <mat-card-content>
+      <form class="grid"  [formGroup]="productoForm" (ngSubmit)="onSummit()">
+        <mat-form-field class="col-12">
+          <mat-label>Nombre</mat-label>
+          <input type="text" matInput required formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Descripcion</mat-label>
+          <input type="text" matInput required formControlName="descripcion">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Cantidad</mat-label>
+          <input type="number" matInput required formControlName="cantidad">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Precio</mat-label>
+          <input type="number" matInput required formControlName="precio">
+        </mat-form-field>
+        <mat-form-field class="col-12" [formGroupName]="'categoria'">
+          <mat-label>Categoria</mat-label>
+          <mat-select required formControlName="idCategoria">
+            <mat-option *ngFor="let catec of categoria" [value]="catec.idCategoria">
+              {{catec.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-12" [formGroupName]="'proveedor'">
+          <mat-label>Proovedor</mat-label>
+          <mat-select required formControlName="idProveedor">
+            <mat-option *ngFor="let catec of proveedor" [value]="catec.idProveedor">
+              {{catec.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="flex justify-content-between">
+
+        <button mat-button color="warn" *ngIf="currentProducto.idProducto"  (click)="onDelete(currentProducto.idProducto)">Borrar <mat-icon>delete</mat-icon> </button>
+        <span></span>
+
+        <button mat-button color="primary" (click)="onSummit()">Guardar <mat-icon>save</mat-icon> </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+</div>
