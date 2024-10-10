@@ -1,0 +1,77 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <h3 class="text-center text-orange">Categorias</h3>
+      <mat-divider></mat-divider>
+
+      <mat-list-item
+        *ngFor="let item of siderbarCategorias"
+        [routerLink]="item.url"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>{{ item.icon }} </mat-icon>
+        {{ item.label }}
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <h3 class="text-center text-orange">Productos</h3>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        *ngFor="let item of siderbarProductos"
+        [routerLink]="item.url"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>{{ item.icon }} </mat-icon>
+        {{ item.label }}
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <h3 class="text-center text-orange">Proveedores</h3>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        *ngFor="let item of siderbarProveedor"
+        [routerLink]="item.url"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>{{ item.icon }} </mat-icon>
+        {{ item.label }}
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-divider></mat-divider>
+      <h3 class="text-center text-orange">Transacciones</h3>
+      <mat-divider></mat-divider>
+      <mat-list-item
+        *ngFor="let item of siderbarTransaccion"
+        [routerLink]="item.url"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>{{ item.icon }} </mat-icon>
+        {{ item.label }}
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+  </mat-toolbar>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
