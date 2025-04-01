@@ -1,6 +1,7 @@
 package gfc.gesationdeinvetario.controllers;
 
 
+import gfc.gesationdeinvetario.dto.ProductoCategoriaDto;
 import gfc.gesationdeinvetario.entity.Productos;
 import gfc.gesationdeinvetario.services.ProductosService;
 import gfc.gesationdeinvetario.services.ValidacionService;
@@ -12,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -66,5 +68,15 @@ public class ProductoController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No encontrado");
     }
 
+    @GetMapping("/productocat")
+    public ResponseEntity<?>listarProductoConCategoria(){
+
+        List<ProductoCategoriaDto>lista=this.service.buscarProductoCategorias();
+        if (lista.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No encontrado");
+        }else {
+            return ResponseEntity.status(HttpStatus.OK).body(lista);
+        }
+    }
 
 }
