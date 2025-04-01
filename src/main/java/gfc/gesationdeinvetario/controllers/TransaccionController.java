@@ -41,4 +41,15 @@ public class TransaccionController {
             put("mensaje", "Transacción registrada con éxito");
         }});
     }
+
+    @GetMapping("/obtener/{idTransaccion}")
+    public ResponseEntity<?>obterTransaccion(@PathVariable("idTransaccion") Integer idTransaccion){
+        return ResponseEntity.status(HttpStatus.OK).body(this.trasaccionService.obtenerTransaccion(idTransaccion));
+    }
+
+    @GetMapping("/cantidad/{id}")
+    public ResponseEntity<?> obtenerCantidad(@PathVariable("id") Integer id){
+
+        return ResponseEntity.status(HttpStatus.OK).body(this.trasaccionService.obtenerCantidad(id));
+    }
 }
