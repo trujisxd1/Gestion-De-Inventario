@@ -1,6 +1,7 @@
 package gfc.gesationdeinvetario.services;
 
 
+import gfc.gesationdeinvetario.dto.ProductoCategoriaDto;
 import gfc.gesationdeinvetario.entity.Productos;
 import gfc.gesationdeinvetario.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Primary
@@ -61,6 +63,18 @@ public class ProductosService {
             return  Optional.of(productoAux);
         }
         return Optional.empty();
+        }
+        public List<ProductoCategoriaDto>buscarProductoCategorias(){
+
+        List<Object[]>resultado=this.productoRepository.ObtenerProductosConCategoria();
+
+        if (resultado.isEmpty()){
+            return null;
+        }
+        return resultado.stream().map(obj-> new ProductoCategoriaDto(
+                (String) obj[0],
+                (String) obj[1]
+        )).collect(Collectors.toList());
         }
     }
 
