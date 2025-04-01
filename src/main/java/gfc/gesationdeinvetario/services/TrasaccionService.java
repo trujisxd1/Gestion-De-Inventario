@@ -43,4 +43,16 @@ public class TrasaccionService {
             throw new RuntimeException("El producto no existe");
         }
     }
+
+    public List<Transaccion_inventario>obtenerTransaccion(Integer productoId) {
+        return this.service.obtenerTransaccionesProducto(productoId);
+    }
+
+
+    public Integer obtenerCantidad(Integer productoId) {
+
+        Integer cantidad=this.service.ObtenerCalculo(productoId);
+
+        return cantidad;
+    }
 }
